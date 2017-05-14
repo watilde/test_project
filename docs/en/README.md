@@ -1,7 +1,42 @@
-# test_markdown
+# Basic writing and formatting syntax
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eros erat, sagittis faucibus magna et, vehicula blandit libero. Morbi elementum, lorem eget eleifend ullamcorper, ante nibh elementum orci, a ullamcorper odio quam ut erat. Sed ac nunc nec arcu varius sollicitudin at eu ligula. Morbi placerat risus sapien, et efficitur sem lacinia in. Nullam augue lacus, interdum vitae viverra vel, blandit nec ligula. Maecenas ut tellus dignissim, consequat ligula non, aliquet nisi. Ut ultrices vitae mi ac efficitur. Ut vel porttitor mi. Vivamus sed ultricies nisi.
+## Headings
 
-Sed placerat vitae justo vitae molestie. Curabitur ac commodo purus, ut feugiat ante. In rutrum purus sed nunc egestas varius. Nam dignissim tortor ut dui vulputate, et lobortis turpis blandit. Etiam tristique posuere sodales. Donec nec mauris ac dui volutpat eleifend sit amet eu purus. In consectetur ante ac dolor gravida tristique.
+To create a heading, add one to six `#` symbols before your heading text. The number of `#` you use will determine the size of the heading.
 
-Curabitur laoreet quam a gravida mattis. Suspendisse potenti. Integer et diam scelerisque, accumsan dui quis, maximus diam. Praesent lobortis sapien nec magna lobortis dictum. Etiam non odio eu sapien maximus interdum. Mauris tincidunt lacinia semper. Suspendisse aliquam lectus in volutpat finibus.
+```
+# The largest heading
+## The second largest heading
+###### The smallest heading
+```
+
+## Styling text
+
+You can indicate emphasis with bold, italic, or strikethrough text.
+
+## Quoting text
+
+You can quote text with a `>`.
+
+```
+In the words of Abraham Lincoln:
+
+> Pardon my French
+```
+
+## Quoting code
+
+You can call out code or a command within a sentence with single backticks. The text within the backticks will not be formatted.
+
+`Use git status to list all new or modified files that haven't yet been committed.`
+
+To format code or text into its own distinct block, use triple backticks.
+
+```
+Some basic Git commands are:
+\`\`\`
+git status
+git add
+git commit
+\`\`\`
+```
