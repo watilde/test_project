@@ -1,93 +1,149 @@
-# Basic writing and formatting syntax
+# Syntax guide [ref](https://guides.github.com/features/mastering-markdown/)
 
-## Headings
+Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com or in your own text files.
 
-To create a heading, add one to six `#` symbols before your heading text. The number of `#` you use will determine the size of the heading.
+## Headers
 
-```
-# The largest heading
-## The second largest heading
-###### The smallest heading
-```
-
-## Styling text
-
-You can indicate emphasis with bold, italic, or strikethrough text.
-
-## Quoting text
-
-You can quote text with a `>`.
+# This is an <h1> tag
+## This is an <h2> tag
+###### This is an <h6> tag
 
 ```
-In the words of Abraham Lincoln:
-
-> Pardon my French
+# This is an <h1> tag
+## This is an <h2> tag
+###### This is an <h6> tag
 ```
 
-## Quoting code
+## Emphasis
 
-You can call out code or a command within a sentence with single backticks. The text within the backticks will not be formatted.
+*This text will be italic*
+_This will also be italic_
 
-`Use git status to list all new or modified files that haven't yet been committed.`
+**This text will be bold**
+__This will also be bold__
 
-To format code or text into its own distinct block, use triple backticks.
+_You **can** combine them_
 
 ```
-Some basic Git commands are:
+*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
 ```
-
-For more information, see ["Creating and highlighting code blocks."](https://help.github.com/articles/creating-and-highlighting-code-blocks/)
-
-## Links
-
-You can create an inline link by wrapping link text in brackets `[ ]`, and then wrapping the URL in parentheses `( )`. You can also use the keyboard shortcut <kmd>command + k</kmd> to create a link.
-
-`This site was built using [GitHub Pages](https://pages.github.com/).`
-
-## Section links
-
-You can link directly to a section in a rendered file by hovering over the section heading to expose the link:
-
-## Relative links
-
-You can define relative links and image paths in your rendered files to help readers navigate to other files in your repository.
-
-A relative link is a link that is relative to the current file. For example, if you have a README file in root of your repository, and you have another file in _docs/CONTRIBUTING.md_, the relative link to _CONTRIBUTING.md_ in your README might look like this:
-
-`[Contribution guidelines for this project](docs/CONTRIBUTING.md)`
-
-GitHub will automatically transform your relative link or image path based on whatever branch you're currently on, so that the link or path always works. You can use all relative link operands, such as `./` and `../`.
-
-Relative links are easier for users who clone your repository. Absolute links may not work in clones of your repository - we recommend using relative links to refer to other files within your repository.
 
 ## Lists
 
-You can make a list by preceding one or more lines of text with `-` or `*`.
+### Unordered
+
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
 
 ```
-- George Washington
-- John Adams
-- Thomas Jefferson
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
 ```
 
-To order your list, precede each line with a number.
+### Ordered
+
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
 
 ```
-1. James Madison
-2. James Monroe
-3. John Quincy Adams
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
 ```
 
-You can create nested lists by indenting lines by two spaces.
+## Images
+
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
 
 ```
-1. Make my changes
-  1. Fix bug
-  2. Improve formatting
-    * Make the headings bigger
-2. Push my commits to GitHub
-3. Open a pull request
-  * Describe my changes
-  * Mention all the members of my team
-    * Ask for feedback
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+```
+
+## Links
+
+http://github.com - automatic!
+[GitHub](http://github.com)
+
+```
+http://github.com - automatic!
+[GitHub](http://github.com)
+```
+
+## Blockquotes
+
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+
+```
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+```
+
+## Inline code
+
+I think you should use an
+`<addr>` element here instead.
+
+```
+I think you should use an
+`<addr>` element here instead.
+```
+
+# GitHub Flavored Markdown
+
+GitHub.com uses its own version of the Markdown syntax that provides an additional set of useful features, many of which make it easier to work with content on GitHub.com.
+
+Note that some features of GitHub Flavored Markdown are only available in the descriptions and comments of Issues and Pull Requests. These include @mentions as well as references to SHA-1 hashes, Issues, and Pull Requests. Task Lists are also available in Gist comments and in Gist Markdown files.
+
+## Task Lists
+
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+```
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+```
+
+If you include a task list in the first comment of an Issue, you will get a handy progress indicator in your issue list. It also works in Pull Requests!
+
+## Tables
+
+You can create tables by assembling a list of words and dividing them with hyphens - (for the first row), and then separating each column with a pipe `|`:
+
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
+```
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 ```
