@@ -1,3 +1,0 @@
-# Hoge
-
-Hello World
