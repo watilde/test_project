@@ -32,7 +32,7 @@ You can call out code or a command within a sentence with single backticks. The 
 Use `git status` to list all new or modified files that haven't yet been committed.
 ```
 
-Use `git status` to list all new or modified files that haven't yet been committed.To format code or text into its own distinct block, use triple backticks. 
+Use `git status` to list all new or modified files that haven't yet been committed.To format code or text into its own distinct block, use triple backticks.
 
 ```
 git status
