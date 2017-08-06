@@ -1,3 +1,5 @@
+<!-- Please do NOT change -->
+
 Create sophisticated formatting for your prose and code on GitHub with simple syntax.
 
 ## Headings
