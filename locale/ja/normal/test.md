@@ -3,6 +3,4 @@
 Translated By: 
 {% include "web/_shared/contributors/mark.html" %}
 
-こんにちは世界
-
 私はロボットです
