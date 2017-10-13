@@ -1,8 +1,11 @@
-**Wikipedia** (*/ˌwɪkɪˈpiːdiə/*)is a <br> _free_ [online encyclopedia](https://exmale.com) with the aim to allow anyone to edit articles.
+`aria-relevant` には、ユーザーに伝える必要がある変更の種類を指定します。複数のオプションがあり、個別に、またはトークンリストとして使用できます。
 
-{# wf_devsite_translation #}
 
-Translated By: 
-{% include "web/_shared/contributors/mark.html" %}
+ - *additions*: ライブ領域に追加するすべての要素に意味があることを意味します。たとえば、既存のステータス メッセージのログに span を追加すると、その span についてユーザーに知らせるということになります（`aria-atomic` は `false` とします）。
 
-私はロボットです
+
+ - *text*: 子孫ノードに追加されるテキスト コンテンツに関連することを意味します。たとえば、カスタム テキスト フィールドの `textContent` プロパティを変更すると、変更されたテキストがユーザーに読み上げられます。
+
+ - *removals*: テキストまたは子孫ノードの削除についてユーザーに伝える必要があることを意味します。
+
+ - *all*: すべての変更に関連することを意味します。ただし、`aria-relevant` のデフォルト値は `additions text` です。つまり、`aria-relevant` を指定しない場合、要素に追加されたものはすべてユーザーに通知されます。これは多くの場合、目的に合致しています。
