@@ -1,0 +1,5 @@
+---
+ja:
+  message:
+    hello_name: Hello %{name}
+    hello_world: Hello World
