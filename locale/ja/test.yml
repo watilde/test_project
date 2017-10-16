@@ -1,5 +1,0 @@
----
-en:
-  message:
-    hello_name: こんにちは　%{name}
-    hello_world: こんにちは世界
