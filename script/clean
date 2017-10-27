@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-  git branch -a | grep -vE '^\*|master$|develop$' | xargs -I % git push origin :%
+  git branch -a | grep -vE '^\*|master$|develop$' | awk '{sub(/remotes\/origin\//, ""); print "git push origin :"$1 ""}' | /bin/sh
 }
 
 main "%@"
