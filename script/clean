@@ -1,0 +1,8 @@
+#!/bin/bash
+
+main() {
+  git branch -a | grep -vE '^\*|master$|develop$' | xargs -I % git push origin :%
+}
+
+main "%@"
+
