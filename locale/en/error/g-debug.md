@@ -13,17 +13,6 @@ This is out of scope for this codelab, but you can use the companion site ( [htt
   <figcaption>You can take notes on post-its and vote on concepts or the sketches themselves.</figcaption>
 </figure> -->
 
-- How do they complete an existing task? For example, say you want to solve the
-  challenge for the financial app above, you could ask them “how do you buy shares
-  and stocks at the moment?”
-- What do they like about this flow?
-- What do they dislike about this flow?
-- What similar products does the user currently use?
-    *  What do they like?
-    *  What do they dislike?
-- If they had a magic wand and could change one thing about this process what
-  would it be?
-
 <!-- tools/chrome-devtools/console/track-exceptions.md  -->
 
 ![Error.stack example](images/track-exceptions-error-stack.jpg)

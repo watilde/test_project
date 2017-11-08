@@ -7,14 +7,6 @@
   <figcaption>付箋紙にメモしたり、コンセプトまたはスケッチに投票できます。</figcaption>
 </figure> -->
 
-- プロトタイプについて好きな点は何か。
-- プロトタイプについて嫌いな点は何か。
-- 問題点は何か。
-      * フローが機能した理由
-      * フローが機能しなかった理由
-- ユーザーは何を改良したいか。
-- デザインまたはフロー全体はユーザーのニーズを満たしているか。
-
 ![Error.stack の例](images/track-exceptions-error-stack.jpg)
 
 ![console.trace() の例](images/track-exceptions-console-trace.jpg)
