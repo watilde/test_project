@@ -1,4 +1,6 @@
-{% framebox height="100%" %}
+
+<div class="framebox-container-container">
+<div class="framebox-container">{% framebox height="100%" %}
 <style>
 .lifecycle-diagram {
   width: 100%;
@@ -7,6 +9,8 @@
 }
 </style>
 {% endframebox %}
+</div>
+</div>
 
 Take this HTML:
 
