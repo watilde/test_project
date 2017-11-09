@@ -20,10 +20,10 @@
 <div class="framebox-container-container">
 <div class="framebox-container">
 {% framebox height="100%" %}
-<link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js" defer></script>
+<link href="" rel="stylesheet">
+<script src="" defer></script>
+<script src="" defer></script>
+<script src="" defer></script>
 <style>
 .lifecycle-diagram {
   width: 100%;
@@ -70,77 +70,7 @@
 <svg class="lifecycle-diagram" style="display:none"></svg>
 <svg class="lifecycle-diagram register" viewBox="0 0 96.9 73"></svg>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var el = document.querySelector('.lifecycle-diagram.register');
-    var timeline = new TimelineLite({paused: true, onComplete: function() {
-      timeline.play(0);
-    }});
-
-    var cogRotate = TweenLite.fromTo(el.querySelector('.cog-new use'), 15, {rotation: 0, transformOrigin:"50% 50%"}, {rotation: 360, ease: Linear.easeNone, paused: true, onComplete: function() {
-      cogRotate.play(0);
-    }});
-
-    timeline.to(el, 0.5, {opacity: 1, ease: Quad.easeInOut});
-    timeline.set({}, {}, "+=0.5");
-    timeline.to(el.querySelector('.cog-new'), 0.5, {opacity: 1, ease: Quad.easeInOut});
-    timeline.set({}, {}, "+=0.5");
-    timeline.to(el.querySelector('.cog-new'), 1, {transform: 'matrix(1.1187138,0,0,1.1187138,67.745203,12.407711)', ease: Quint.easeInOut});
-    timeline.addLabel('cog-active');
-
-    var subTimeline = new TimelineLite();
-    subTimeline.set({}, {}, "+=0.7");
-    subTimeline.to(el.querySelector('.diagram-page'), 0.5, {opacity: 0, ease: Quad.easeInOut});
-    subTimeline.set({}, {}, "+=0.5");
-    subTimeline.addLabel('page-load')
-    subTimeline.to(el.querySelector('.diagram-page'), 0.5, {opacity: 1, ease: Quad.easeInOut});
-    subTimeline.to(el.querySelector('.controlled'), 0.5, {opacity: 1, ease: Quad.easeInOut, delay: 0.25}, 'page-load');
-
-    var refresh = new TimelineLite();
-    refresh.set({}, {}, "+=0.5");
-    refresh.addLabel('refresh-appearing');
-    refresh.fromTo(el.querySelector('.diagram-refresh'), 0.25,
-      {opacity: 0, scale: 0, transformOrigin:"50% 50%"},
-      {opacity: 1, scale: 1, ease: Quad.easeInOut}
-    );
-    refresh.set({}, {}, "+=1.3");
-    refresh.to(el.querySelector('.diagram-refresh'), 0.25, {opacity: 0, scale: 0, ease: Quad.easeInOut});
-    refresh.to(el.querySelector('.refresh-rotator'), 2, {rotation: 360, ease: Linear.easeNone}, 'refresh-appearing');
-
-    timeline.add(subTimeline, 'cog-active');
-    timeline.add(refresh, 'cog-active');
-
-    var fetching = new TimelineLite();
-    Array.prototype.slice.call(el.querySelectorAll('.fetch')).forEach(function(el, i) {
-      fetching.to(el, 0.5, {strokeDashoffset: '-19px', ease: Linear.easeNone}, i * 0.15);
-    });
-
-    timeline.add(fetching);
-    timeline.set({}, {}, "+=3");
-    timeline.to(el, 0.5, {opacity: 0, ease: Quad.easeInOut});
-    timeline.set({}, {}, "+=0.5");
-
-    if (window.IntersectionObserver) {
-      var observer = new IntersectionObserver(function(changes) {
-        changes.forEach(function(change) {
-          if (change.intersectionRatio) {
-            timeline.play(0);
-            cogRotate.play(0);
-            return;
-          }
-          timeline.pause();
-          cogRotate.pause();
-        });
-      }, {});
-
-      observer.observe(document.documentElement);
-    }
-    else {
-      timeline.play(0);
-      cogRotate.play(0);
-    }
-  });
-</script>
+<script></script>
 {% endframebox %}
 </div>
 </div>
