@@ -20,10 +20,6 @@
 <div class="framebox-container-container">
 <div class="framebox-container">
 {% framebox height="100%" %}
-<link href="" rel="stylesheet">
-<script src="" defer></script>
-<script src="" defer></script>
-<script src="" defer></script>
 <style>
 .lifecycle-diagram {
   width: 100%;
@@ -67,8 +63,8 @@
   opacity: 0;
 }
 </style>
-<svg class="lifecycle-diagram" style="display:none"></svg>
-<svg class="lifecycle-diagram register" viewBox="0 0 96.9 73"></svg>
+<svg></svg>
+<svg></svg>
 
 <script></script>
 {% endframebox %}
