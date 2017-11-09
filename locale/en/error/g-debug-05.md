@@ -2,12 +2,6 @@
 <div class="framebox-container">
 {% framebox height="100%" %}
 <style>
-.lifecycle-diagram {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 .lifecycle-diagram .label {
   font-size: 9.46829414px;
   font-family: 'Just Another Hand';
