@@ -1,6 +1,7 @@
 <!-- remove style -->
 
-<style><div class="framebox-container-container">
+<style></style>
+<div class="framebox-container-container">
 <div class="framebox-container">
 {% framebox height="100%" %}
 <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
