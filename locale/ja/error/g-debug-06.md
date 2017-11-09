@@ -2,10 +2,33 @@
 <div class="framebox-container">
 {% framebox height="100%" %}
 <style>
-.lifecycle-diagram {
-  width: 100%;
-  height: auto;
-  display: block;
+.lifecycle-diagram .state-placeholder {
+  fill: none;
+  stroke-opacity: 0.28;
+  stroke-width: 1px;
+  stroke: #000;
+  stroke-dasharray: 1;
+}
+.lifecycle-diagram .fetch {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+}
+.lifecycle-diagram .controlled {
+  fill: #d1eaff;
+}
+
+.lifecycle-diagram .fetch {
+  stroke-dasharray: 7 30;
+  stroke-dashoffset: 8;
+}
+
+.lifecycle-diagram.register,
+.lifecycle-diagram .diagram-refresh,
+.lifecycle-diagram .diagram-close,
+.lifecycle-diagram.register .controlled,
+.lifecycle-diagram .cog-new {
+  opacity: 0;
 }
 </style>
 {% endframebox %}
