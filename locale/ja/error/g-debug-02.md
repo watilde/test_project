@@ -1,11 +1,72 @@
+<style>
+  .framebox-container-container {
+    max-width: 466px;
+    margin: 1.8rem auto 0;
+  }
+  .framebox-container {
+    position: relative;
+    padding-top: 75.3%;
+  }
+  .framebox-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+  .browser-screenshot {
+    filter: drop-shadow(0 6px 4px rgba(0,0,0,0.2));
+  }
+</style>
 <div class="framebox-container-container">
 <div class="framebox-container">
 {% framebox height="100%" %}
-<link href="" rel="stylesheet">
-<script src="" defer></script>
-<script src="" defer></script>
-<script src="" defer></script>
-<style></style>
+<link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js" defer></script>
+<style>
+.lifecycle-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lifecycle-diagram .label {
+  font-size: 9.46829414px;
+  font-family: 'Just Another Hand';
+  text-align: center;
+  text-anchor: middle;
+}
+
+.lifecycle-diagram .state-placeholder {
+  fill: none;
+  stroke-opacity: 0.28;
+  stroke-width: 1px;
+  stroke: #000;
+  stroke-dasharray: 1;
+}
+.lifecycle-diagram .fetch {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+}
+.lifecycle-diagram .controlled {
+  fill: #d1eaff;
+}
+
+.lifecycle-diagram .fetch {
+  stroke-dasharray: 7 30;
+  stroke-dashoffset: 8;
+}
+
+.lifecycle-diagram.register,
+.lifecycle-diagram .diagram-refresh,
+.lifecycle-diagram .diagram-close,
+.lifecycle-diagram.register .controlled,
+.lifecycle-diagram .cog-new {
+  opacity: 0;
+}
+</style>
 <svg class="lifecycle-diagram" style="display:none">
   <defs>
     <g id="diagram-static">
@@ -22,7 +83,77 @@
 </svg>
 <svg class="lifecycle-diagram register" viewBox="0 0 96.9 73"><rect ry="15.8" y="10" x="65.4" height="63" width="31.6" class="controlled"/><use xlink:href="#diagram-static"/><g transform="matrix(1.1187 0 0 1.1187 1.078 12.408)" class="cog cog-new"><use height="10" width="10" xlink:href="#diagram-sw"/></g><use transform="matrix(.09532 0 0 .09532 71.44 48.39)" xlink:href="#diagram-page" width="10" height="10" class="diagram-page"/><path d="M78.6 47.7c-1-6-2-11.6-1.6-17" class="fetch"/><path d="M83 47.5c1.4-5.4 3.3-10.8 2.4-16.2" class="fetch"/><path d="M75.7 47c-2.3-6.3-3.2-12.5-2-18.2" class="fetch"/><path d="M89.5 29.5c.3 6-.4 12-4 18" class="fetch"/><path d="M75.4 30.3c0 4-1 6 2 17.2" class="fetch"/><path d="M86.6 31C88 37 86 42 84 47.4" class="fetch"/><g class="refresh-rotator"><use xlink:href="#diagram-refresh" class="diagram-refresh"/></g></svg>
 
-<script></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var el = document.querySelector('.lifecycle-diagram.register');
+    var timeline = new TimelineLite({paused: true, onComplete: function() {
+      timeline.play(0);
+    }});
+
+    var cogRotate = TweenLite.fromTo(el.querySelector('.cog-new use'), 15, {rotation: 0, transformOrigin:"50% 50%"}, {rotation: 360, ease: Linear.easeNone, paused: true, onComplete: function() {
+      cogRotate.play(0);
+    }});
+
+    timeline.to(el, 0.5, {opacity: 1, ease: Quad.easeInOut});
+    timeline.set({}, {}, "+=0.5");
+    timeline.to(el.querySelector('.cog-new'), 0.5, {opacity: 1, ease: Quad.easeInOut});
+    timeline.set({}, {}, "+=0.5");
+    timeline.to(el.querySelector('.cog-new'), 1, {transform: 'matrix(1.1187138,0,0,1.1187138,67.745203,12.407711)', ease: Quint.easeInOut});
+    timeline.addLabel('cog-active');
+
+    var subTimeline = new TimelineLite();
+    subTimeline.set({}, {}, "+=0.7");
+    subTimeline.to(el.querySelector('.diagram-page'), 0.5, {opacity: 0, ease: Quad.easeInOut});
+    subTimeline.set({}, {}, "+=0.5");
+    subTimeline.addLabel('page-load')
+    subTimeline.to(el.querySelector('.diagram-page'), 0.5, {opacity: 1, ease: Quad.easeInOut});
+    subTimeline.to(el.querySelector('.controlled'), 0.5, {opacity: 1, ease: Quad.easeInOut, delay: 0.25}, 'page-load');
+
+    var refresh = new TimelineLite();
+    refresh.set({}, {}, "+=0.5");
+    refresh.addLabel('refresh-appearing');
+    refresh.fromTo(el.querySelector('.diagram-refresh'), 0.25,
+      {opacity: 0, scale: 0, transformOrigin:"50% 50%"},
+      {opacity: 1, scale: 1, ease: Quad.easeInOut}
+    );
+    refresh.set({}, {}, "+=1.3");
+    refresh.to(el.querySelector('.diagram-refresh'), 0.25, {opacity: 0, scale: 0, ease: Quad.easeInOut});
+    refresh.to(el.querySelector('.refresh-rotator'), 2, {rotation: 360, ease: Linear.easeNone}, 'refresh-appearing');
+
+    timeline.add(subTimeline, 'cog-active');
+    timeline.add(refresh, 'cog-active');
+
+    var fetching = new TimelineLite();
+    Array.prototype.slice.call(el.querySelectorAll('.fetch')).forEach(function(el, i) {
+      fetching.to(el, 0.5, {strokeDashoffset: '-19px', ease: Linear.easeNone}, i * 0.15);
+    });
+
+    timeline.add(fetching);
+    timeline.set({}, {}, "+=3");
+    timeline.to(el, 0.5, {opacity: 0, ease: Quad.easeInOut});
+    timeline.set({}, {}, "+=0.5");
+
+    if (window.IntersectionObserver) {
+      var observer = new IntersectionObserver(function(changes) {
+        changes.forEach(function(change) {
+          if (change.intersectionRatio) {
+            timeline.play(0);
+            cogRotate.play(0);
+            return;
+          }
+          timeline.pause();
+          cogRotate.pause();
+        });
+      }, {});
+
+      observer.observe(document.documentElement);
+    }
+    else {
+      timeline.play(0);
+      cogRotate.play(0);
+    }
+  });
+</script>
 {% endframebox %}
 </div>
 </div>
@@ -97,6 +228,7 @@ Service Worker 登録のデフォルトのスコープは、スクリプト URL 
 
 
 Chrome の DevTools によって、エラーがコンソールと [Application] タブの Service Worker セクションに表示されます。
+
 
 <figure>
   <img src="images/register-fail.png" class="browser-screenshot" alt="Service Worker の DevTools タブに表示されたエラー">
