@@ -35,7 +35,7 @@
 </div>
 </div>
 
-次の HTML をご覧ください。。
+次の HTML をご覧ください。
 
     <!DOCTYPE html>
     An image will appear here in 3 seconds:
