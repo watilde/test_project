@@ -111,7 +111,7 @@ To include a literal backtick character within a code span, you can use multiple
 
 ## Links
 
-Markdown supports inline and reference links. In both styles, the link text is delimited by [square brackets]. To create an inline link, use this syntax:
+Markdown supports inline and reference links. the link text is delimited by [square brackets]. To create an inline link, use this syntax:
 
 	[ Text for the link ](URL)
 
