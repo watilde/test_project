@@ -1,4 +1,4 @@
-# GitHub Flavored Markdown
+# GitHub Flavored markdown
 
 ## Basic writing and formatting syntax
 
