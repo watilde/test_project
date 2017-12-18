@@ -1,6 +1,0 @@
-- Respond to users immediately; acknowledge user input in under 100ms.
-- When animating or scrolling, produce a frame in under 10ms.
-- Maximize main thread idle time.
-- Keep users engaged; deliver interactive content in under 1000ms.
-
-Respond to users immediately; acknowledge user input in under 100ms.
