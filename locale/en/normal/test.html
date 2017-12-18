@@ -1,32 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-<h1>Title</h1>
+<html>
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        A Dream of the Future
+      </h1>
+    </header>
 
-<quote>
-  <p>This is an example file with default selections.</p>
-</quote>
+    <main>
+      <p class="bold">Oh hi,</p>
+      <p>Tell me your hopes and dreams:</p>
+      <form>
+        <input type="text" maxlength="100" placeholder="Dreams!">
+        <button type="submit">Submit</button>
+      </form>
+      <section class="dreams">
+        <ul id="dreams">
+        </ul>
+      </section>
+    </main>
 
-<h2>Install</h2>
-<pre>
-  <code>npm i hoge --save-dev</code>
-</pre>
+    <footer>
+      <a href="https://glitch.com">
+        Remix this in Glitch
+      </a>
+    </footer>
 
-<h2>Usage</h2>
-<pre>
-  <code>
-    const hoge = require('hoge')
-    hoge()
-  </code>
-</pre>
-
-<h2>License</h2>
-<p>MIT © Sherlock Holmes</p>
-</body>
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/client.js"></script>
+  </body>
 </html>
