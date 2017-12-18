@@ -1,4 +1,6 @@
-# GitLab Flavored Markdown (GFM)
+# Markdown
+
+## GitLab Flavored Markdown (GFM)
 
 > **Note:**
 Not all of the GitLab-specific extensions to Markdown that are described in
@@ -20,6 +22,7 @@ You can use GFM in the following areas:
 - snippets (the snippet must be named with a `.md` extension)
 - wiki pages
 - markdown documents inside the repository
+- epics
 
 You can also use other rich text files in GitLab. You might have to install a
 dependency to do so. Please see the [github-markup gem readme](https://github.com/gitlabhq/markup#markups) for more information.
@@ -39,7 +42,7 @@ Line-breaks, or softreturns, are rendered if you end a line with two or more spa
 
     Sugar is sweet
 
-Roses are red  
+Roses are red
 Violets are blue
 
 Sugar is sweet
@@ -193,12 +196,23 @@ With inline diffs tags you can display {+ additions +} or [- deletions -].
 
 The wrapping tags can be either curly braces or square brackets [+ additions +] or {- deletions -}.
 
+Examples:
+
+```
+- {+ additions +}
+- [+ additions +]
+- {- deletions -}
+- [- deletions -]
+```
+
 However the wrapping tags cannot be mixed as such:
 
+```
 - {+ additions +]
 - [+ additions +}
 - {- deletions -]
 - [- deletions -}
+```
 
 ### Emoji
 
@@ -243,6 +257,7 @@ GFM will recognize the following:
 | `#123`                     | issue                           |
 | `!123`                     | merge request                   |
 | `$123`                     | snippet                         |
+| `&123`                     | epic                            |
 | `~123`                     | label by ID                     |
 | `~bug`                     | one-word label by name          |
 | `~"feature request"`       | multi-word label by name        |
@@ -263,6 +278,7 @@ GFM also recognizes certain cross-project references:
 | `namespace/project%123`                 | project milestone       |
 | `namespace/project$123`                 | snippet                 |
 | `namespace/project@9ba12248`            | specific commit         |
+| `group1/subgroup&123`                   | epic                    |
 | `namespace/project@9ba12248...b19a04f5` | commit range comparison |
 | `namespace/project~"Some label"`        | issues with given label |
 
@@ -366,6 +382,40 @@ _Be advised that KaTeX only supports a [subset][katex-subset] of LaTeX._
 >**Note:**
 This also works for the asciidoctor `:stem: latexmath`. For details see the [asciidoctor user manual][asciidoctor-manual].
 
+### Mermaid
+
+> [Introduced](https://gitlab.com/gitlab-org/gitlab-ce/merge_requests/15107) in
+GitLab 10.3.
+
+> If this is not rendered correctly, see
+https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/user/markdown.md#mermaid
+
+It is possible to generate diagrams and flowcharts from text using [Mermaid][mermaid].
+
+In order to generate a diagram or flowchart, you should write your text inside the `mermaid` block.
+
+Example:
+
+    ```mermaid
+    graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+    ```
+
+Becomes:
+
+```mermaid
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+
+For details see the [Mermaid official page][mermaid].
+
 ## Standard Markdown
 
 ### Headers
@@ -410,6 +460,7 @@ For example:
 # This header has Unicode in it: 한글
 ## This header has spaces in it
 ### This header has spaces in it
+## This header has 3.5 in it (and parentheses)
 ```
 
 Would generate the following link IDs:
@@ -419,6 +470,7 @@ Would generate the following link IDs:
 1. `this-header-has-unicode-in-it-한글`
 1. `this-header-has-spaces-in-it`
 1. `this-header-has-spaces-in-it-1`
+1. `this-header-has-3-5-in-it-and-parentheses`
 
 Note that the Emoji processing happens before the header IDs are generated, so the Emoji is converted to an image which then gets removed from the ID.
 
@@ -594,6 +646,30 @@ See the documentation for HTML::Pipeline's [SanitizationFilter](http://www.rubyd
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 
+#### Details and Summary
+
+Content can be collapsed using HTML's [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary) tags. This is especially useful for collapsing long logs so they take up less screen space.
+
+<p>
+<details>
+<summary>Click me to collapse/fold.</summary>
+These details will remain hidden until expanded.
+
+<pre><code>PASTE LOGS HERE</code></pre>
+</details>
+</p>
+
+**Note:** Unfortunately Markdown is not supported inside these tags, as described by the [markdown specification](https://daringfireball.net/projects/markdown/syntax#html). You can work around this by using HTML, for example you can use `<pre><code>` tags instead of [code fences](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/user/markdown.md#code-and-syntax-highlighting).
+
+```html
+<details>
+<summary>Click me to collapse/fold.</summary>
+These details will remain hidden until expanded.
+
+<pre><code>PASTE LOGS HERE</code></pre>
+</details>
+```
+
 ### Horizontal Rule
 
 ```
@@ -640,7 +716,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it *does not break* and just follows the previous line in the *same paragraph*.
 
-This line is also a separate paragraph, and...  
+This line is also a separate paragraph, and...
 This line is *on its own line*, because the previous line ends with two spaces. (but still in the *same paragraph*)
 
 spaces.
@@ -653,7 +729,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it *does not break* and just follows the previous line in the *same paragraph*.
 
-This line is also a separate paragraph, and...  
+This line is also a separate paragraph, and...
 This line is *on its own line*, because the previous line ends with two spaces. (but still in the *same paragraph*)
 
 spaces.
@@ -788,6 +864,7 @@ A link starting with a `/` is relative to the wiki root.
 [^2]: This is my awesome footnote.
 
 [markdown.md]: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/user/markdown.md
+[mermaid]: https://mermaidjs.github.io/ "Mermaid website"
 [rouge]: http://rouge.jneen.net/ "Rouge website"
 [redcarpet]: https://github.com/vmg/redcarpet "Redcarpet website"
 [katex]: https://github.com/Khan/KaTeX "KaTeX website"
