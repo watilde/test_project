@@ -1,1 +1,1 @@
-*This* is a ~~[link](http://example.com)~~. Update It is the correct [link](http://exmaple.com/new)
+*This* is a ~~[first](http://first.com)~~. Update It is the correct [second](http://second.com/)
